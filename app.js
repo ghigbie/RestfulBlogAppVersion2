@@ -38,11 +38,23 @@ app.get("/blogs", function(req, res){
        });       
 });
 // NEW ROUTE
-app.get("/bolgs/new", function(req, res){
+app.get("/blogs/new", function(req, res){
     res.render("new");
 });
 
 // CREATE ROUTE
+app.post("/blogs", function(req, res){
+    //create the blog
+    Blog.create(req.body.blog, function(err, newBlog){
+        if(err){
+            console.log("PROBLEM!")
+            res.render("new");
+        }else{
+            res.redirect("/blogs");
+        }
+    });
+    //then redirect
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("SERVER IS RUNNING!!!");
