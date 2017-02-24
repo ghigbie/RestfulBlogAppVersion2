@@ -1,0 +1,19 @@
+{
+  "name": "restful-blog-app-version-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghigbie/RestfulBlogAppVersion2.git"
+  },
+  "author": "George Higbie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghigbie/RestfulBlogAppVersion2/issues"
+  },
+  "homepage": "https://github.com/ghigbie/RestfulBlogAppVersion2#readme"
+}
