@@ -81,6 +81,19 @@ app.get("/blogs/:id/edit", function(req, res){
     });
 });
 
+//UPDATE ROUTE as a PUT REQUEST
+app.put("/blogs/:id", function(req, res){ //this could be a post request, but since we are using RESTFUL routing "put" should be used here
+    res.send("UPDATE ROUTE");
+    
+    // Blog.create(req.body.blog, function(err, newBlog){
+    //     if(err){
+    //         console.log("ERROR IN UPDATE ROUTE");
+    //         console.log("ERROR!");
+    //     }else{
+    //         res.render("/index", )
+            });
+
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("SERVER IS RUNNING!!!");
