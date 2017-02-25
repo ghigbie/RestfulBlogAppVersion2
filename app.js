@@ -70,7 +70,7 @@ app.get("/blogs/:id", function(req, res){
 });
 
 //EDIT ROUTE
-app.get("/bolgs/:id/edit", function(req, res){
+app.get("/blogs/:id/edit", function(req, res){
     res.render("edit");
 });
 
