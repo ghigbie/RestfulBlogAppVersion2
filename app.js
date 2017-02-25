@@ -1,12 +1,15 @@
-var express = require("express"),
-    app = express(),
-    mongoose = require("mongoose"),
-    bodyParser = require("body-parser");
-    
+var express        = require("express"),
+    app            = express(),
+    mongoose       = require("mongoose"),
+    bodyParser     = require("body-parser"),
+    methodOverride = require("method-override");
+
+//APP CONFIG
 mongoose.connect("mongodb://localhost/restful_blog_app");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 // Mongoose/modle config
 var blogSchema = new mongoose.Schema({
@@ -83,16 +86,15 @@ app.get("/blogs/:id/edit", function(req, res){
 
 //UPDATE ROUTE as a PUT REQUEST
 app.put("/blogs/:id", function(req, res){ //this could be a post request, but since we are using RESTFUL routing "put" should be used here
-    res.send("UPDATE ROUTE");
-    
-    // Blog.create(req.body.blog, function(err, newBlog){
-    //     if(err){
-    //         console.log("ERROR IN UPDATE ROUTE");
-    //         console.log("ERROR!");
-    //     }else{
-    //         res.render("/index", )
-            });
-
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+        if(err){
+            console.log("ERROR IN UPDATE ROUTE");
+            res.redirect("/blogs");
+        }else{
+            res.redirect("/blogs/" + req.params.id);
+        }
+    });
+});
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
