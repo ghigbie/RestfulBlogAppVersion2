@@ -84,7 +84,7 @@ app.get("/blogs/:id/edit", function(req, res){
     });
 });
 
-//UPDATE ROUTE as a PUT REQUEST
+//UPDATE ROUTE as a PUT REQUEST - this must be overridden
 app.put("/blogs/:id", function(req, res){ //this could be a post request, but since we are using RESTFUL routing "put" should be used here
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
         if(err){
@@ -96,6 +96,10 @@ app.put("/blogs/:id", function(req, res){ //this could be a post request, but si
     });
 });
 
+//DESTROY ROUTE as a DELETE REQUEST - this must be overriden
+app.delete("/blogs/:id", function(req, res){
+   res.send("YOU HAVE REACHED THE DESTROY ROUTE"); 
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("SERVER IS RUNNING!!!");
