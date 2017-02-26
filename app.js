@@ -98,8 +98,7 @@ app.put("/blogs/:id", function(req, res){ //this could be a post request, but si
 
 //DESTROY ROUTE as a DELETE REQUEST - this must be overriden
 app.delete("/blogs/:id", function(req, res){
-    //destroy blog
-    Blog.findByIdAndRemore(req.params.id, function(err){
+    Blog.findByIdAndRemove(req.params.id, function(err){
        if(err){
            console.log("THERE WAS A DELETE ERROR");
            res.redirect("/blogs");
@@ -107,10 +106,6 @@ app.delete("/blogs/:id", function(req, res){
            res.redirect("/blogs");
        }
     });
-    
-    //redirect somewhere
-    
-   res.send("YOU HAVE REACHED THE DESTROY ROUTE"); 
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
