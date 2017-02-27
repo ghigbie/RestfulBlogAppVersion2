@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost/restful_blog_app");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(expressSanitizer); //this line must come after body-parser
+//app.use(expressSanitizer); //this line must come after body-parser
 app.use(methodOverride("_method"));
 
 // Mongoose/modle config
@@ -51,7 +51,8 @@ app.get("/blogs/new", function(req, res){
 app.post("/blogs", function(req, res){
     //create the blog
     console.log(req.body);
-    req.body.blog.body = req.sanitize(req.body.blog.body);
+ //   req.body.blog.body = req.sanitize(req.body.blog.body);
+    console.log("=====================");
     console.log(req.body);
     Blog.create(req.body.blog, function(err, newBlog){
         if(err){
