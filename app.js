@@ -23,13 +23,14 @@ var blogSchema = new mongoose.Schema({
         default: Date.now()
     }
 });
+
 var Blog = mongoose.model("Blog", blogSchema);
     
 //RESTFUL ROUTES
 
 app.get("/", function(req, res){
     res.redirect("/blogs");
-})
+});
 
 //INDEX ROUTE
 app.get("/blogs", function(req, res){
